@@ -1,0 +1,32 @@
+[
+  {
+    "Ticket": "A11",
+    "MovieName": "Thỏ Ơi!!",
+    "Theater": "Beta",
+    "Date": "Friday, December 25, 2026",
+    "TimeFrame": "10:20 ~ 12:20\t",
+    "Seats": 1,
+    "PopcornPrices": 30000,
+    "TotalPrice": 130000
+  },
+  {
+    "Ticket": "Không chọn",
+    "MovieName": "Không chọn",
+    "Theater": "Không chọn",
+    "Date": "Không chọn",
+    "TimeFrame": "Không chọn",
+    "Seats": 0,
+    "PopcornPrices": 0,
+    "TotalPrice": 0
+  },
+  {
+    "Ticket": "Không chọn",
+    "MovieName": "Không chọn",
+    "Theater": "Không chọn",
+    "Date": "Không chọn",
+    "TimeFrame": "Không chọn",
+    "Seats": 0,
+    "PopcornPrices": 100000,
+    "TotalPrice": 100000
+  }
+]
