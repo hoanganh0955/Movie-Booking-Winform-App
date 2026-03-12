@@ -1,0 +1,15 @@
+[
+  {
+    "Ticket": "A8, A7",
+    "MovieName": "Zootropolis 2",
+    "Theater": "Lotte",
+    "Date": "Friday, December 25, 2026",
+    "TimeFrame": "10:20 ~ 12:20\t",
+    "Seats": 2,
+    "PopcornPrices": 130000,
+    "SeatPrices": 110000,
+    "TotalPrice": 330000,
+    "StarRating": 4,
+    "Review": "Phim hay"
+  }
+]
