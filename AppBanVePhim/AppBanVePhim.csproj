@@ -53,11 +53,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billings.Designer.cs">
+      <DependentUpon>Billings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs" />
+    <Compile Include="Movie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movie.Designer.cs">
+      <DependentUpon>Movie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetails.cs" />
+    <Compile Include="PopcornMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopcornMenu.Designer.cs">
+      <DependentUpon>PopcornMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Ratings.cs">
       <SubType>Form</SubType>
@@ -65,6 +85,13 @@
     <Compile Include="Ratings.Designer.cs">
       <DependentUpon>Ratings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Seats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seats.Designer.cs">
+      <DependentUpon>Seats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shared Data.cs" />
     <Compile Include="SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,8 +106,23 @@
     <Compile Include="SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Theater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Theater.Designer.cs">
+      <DependentUpon>Theater.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Billings.resx">
+      <DependentUpon>Billings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movie.resx">
+      <DependentUpon>Movie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopcornMenu.resx">
+      <DependentUpon>PopcornMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,11 +133,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ratings.resx">
+      <DependentUpon>Ratings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seats.resx">
+      <DependentUpon>Seats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Theater.resx">
+      <DependentUpon>Theater.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

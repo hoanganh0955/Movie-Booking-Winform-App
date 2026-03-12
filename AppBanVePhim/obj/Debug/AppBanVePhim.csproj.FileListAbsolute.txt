@@ -15,3 +15,9 @@ C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.csp
 C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.SignIn.resources
 C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.SignUp.resources
 C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.csproj.CopyComplete
+C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.Movie.resources
+C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.Ratings.resources
+C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.Billings.resources
+C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.PopcornMenu.resources
+C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.Seats.resources
+C:\Users\dinom\source\repos\AppBanVePhim\AppBanVePhim\obj\Debug\AppBanVePhim.Theater.resources
