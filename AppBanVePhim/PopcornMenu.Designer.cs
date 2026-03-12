@@ -30,11 +30,11 @@ namespace AppBanVePhim
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopcornMenu));
-            AntdUI.MenuItem menuItem11 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem12 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem13 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem14 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem15 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem1 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem2 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem3 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem4 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem5 = new AntdUI.MenuItem();
             this.couplePlusCount = new System.Windows.Forms.NumericUpDown();
             this.coupleCount = new System.Windows.Forms.NumericUpDown();
             this.singleCount = new System.Windows.Forms.NumericUpDown();
@@ -60,8 +60,8 @@ namespace AppBanVePhim
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.menu1 = new AntdUI.Menu();
             this.close = new AntdUI.Label();
+            this.menu1 = new AntdUI.Menu();
             ((System.ComponentModel.ISupportInitialize)(this.couplePlusCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coupleCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.singleCount)).BeginInit();
@@ -87,6 +87,7 @@ namespace AppBanVePhim
             this.couplePlusCount.TabIndex = 23;
             this.couplePlusCount.Tag = "couple+";
             this.couplePlusCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.couplePlusCount.ValueChanged += new System.EventHandler(this.NumericUpDown_ValueChanged);
             // 
             // coupleCount
             // 
@@ -97,6 +98,7 @@ namespace AppBanVePhim
             this.coupleCount.TabIndex = 22;
             this.coupleCount.Tag = "couple";
             this.coupleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.coupleCount.ValueChanged += new System.EventHandler(this.NumericUpDown_ValueChanged);
             // 
             // singleCount
             // 
@@ -107,6 +109,7 @@ namespace AppBanVePhim
             this.singleCount.TabIndex = 21;
             this.singleCount.Tag = "single";
             this.singleCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.singleCount.ValueChanged += new System.EventHandler(this.NumericUpDown_ValueChanged);
             // 
             // pepsiCount
             // 
@@ -117,6 +120,7 @@ namespace AppBanVePhim
             this.pepsiCount.TabIndex = 20;
             this.pepsiCount.Tag = "pepsi";
             this.pepsiCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pepsiCount.ValueChanged += new System.EventHandler(this.NumericUpDown_ValueChanged);
             // 
             // popcornCount
             // 
@@ -127,6 +131,7 @@ namespace AppBanVePhim
             this.popcornCount.TabIndex = 19;
             this.popcornCount.Tag = "popcorn";
             this.popcornCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.popcornCount.ValueChanged += new System.EventHandler(this.NumericUpDown_ValueChanged);
             // 
             // label17
             // 
@@ -160,6 +165,7 @@ namespace AppBanVePhim
             this.partyCount.TabIndex = 24;
             this.partyCount.Tag = "party";
             this.partyCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.partyCount.ValueChanged += new System.EventHandler(this.NumericUpDown_ValueChanged);
             // 
             // popcornPanel
             // 
@@ -370,33 +376,6 @@ namespace AppBanVePhim
             this.panel1.Size = new System.Drawing.Size(946, 94);
             this.panel1.TabIndex = 26;
             // 
-            // menu1
-            // 
-            menuItem11.Name = "menuMovie";
-            menuItem11.Text = "Chọn phim";
-            menuItem12.Name = "menuPopcorn";
-            menuItem12.Text = "Bỏng nước";
-            menuItem13.Name = "menuBillings";
-            menuItem13.Text = "Thống kê";
-            menuItem14.Name = "menuRatings";
-            menuItem14.Text = "Đánh giá";
-            menuItem15.Name = "menuLogout";
-            menuItem15.Text = "Đăng xuất";
-            this.menu1.Items.Add(menuItem11);
-            this.menu1.Items.Add(menuItem12);
-            this.menu1.Items.Add(menuItem13);
-            this.menu1.Items.Add(menuItem14);
-            this.menu1.Items.Add(menuItem15);
-            this.menu1.Location = new System.Drawing.Point(1, 1);
-            this.menu1.Mode = AntdUI.TMenuMode.Horizontal_Arrow;
-            this.menu1.Name = "menu1";
-            this.menu1.ScrollBarBlock = true;
-            this.menu1.Size = new System.Drawing.Size(54, 52);
-            this.menu1.TabIndex = 35;
-            this.menu1.Text = "menu1";
-            this.menu1.Trigger = AntdUI.Trigger.Click;
-            this.menu1.SelectChanged += new AntdUI.SelectEventHandler(this.menu1_SelectChanged);
-            // 
             // close
             // 
             this.close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -406,6 +385,33 @@ namespace AppBanVePhim
             this.close.TabIndex = 27;
             this.close.Text = "X";
             this.close.Click += new System.EventHandler(this.close_Click);
+            // 
+            // menu1
+            // 
+            menuItem1.Name = "menuMovie";
+            menuItem1.Text = "Chọn phim";
+            menuItem2.Name = "menuPopcorn";
+            menuItem2.Text = "Bỏng nước";
+            menuItem3.Name = "menuBillings";
+            menuItem3.Text = "Thống kê";
+            menuItem4.Name = "menuRatings";
+            menuItem4.Text = "Đánh giá";
+            menuItem5.Name = "menuLogout";
+            menuItem5.Text = "Đăng xuất";
+            this.menu1.Items.Add(menuItem1);
+            this.menu1.Items.Add(menuItem2);
+            this.menu1.Items.Add(menuItem3);
+            this.menu1.Items.Add(menuItem4);
+            this.menu1.Items.Add(menuItem5);
+            this.menu1.Location = new System.Drawing.Point(1, 1);
+            this.menu1.Mode = AntdUI.TMenuMode.Horizontal_Arrow;
+            this.menu1.Name = "menu1";
+            this.menu1.ScrollBarBlock = true;
+            this.menu1.Size = new System.Drawing.Size(54, 52);
+            this.menu1.TabIndex = 35;
+            this.menu1.Text = "menu1";
+            this.menu1.Trigger = AntdUI.Trigger.Click;
+            this.menu1.SelectChanged += new AntdUI.SelectEventHandler(this.menu1_SelectChanged);
             // 
             // PopcornMenu
             // 

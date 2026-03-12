@@ -82,7 +82,25 @@ namespace AppBanVePhim
             billingsForm.Show();
             this.Hide();
         }
+        private void popcornConfirm_Click(object sender, EventArgs e)
+        {
+            int total = 0;
 
+            foreach (Control ctrl in popcornPanel.Controls)
+            {
+                if (ctrl is NumericUpDown num && num.Value > 0 && num.Tag is FoodItem item)
+                {
+                    total += item.Price * (int)num.Value;
+                }
+            }
+            if (total == 0)
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất một món ăn/nước uống!");
+                return;
+            }
+
+            MessageBox.Show("Đã xác nhận lựa chọn bỏng nước. Tổng: " + total.ToString("N0") + " VND");
+        }
         private void ResetForm()
         {
             foreach (Control ctrl in this.Controls)
@@ -93,7 +111,6 @@ namespace AppBanVePhim
             sumBill.Text = "Tổng tiền: 0 VNĐ";
             orders.Clear();
         }
-
         private void HasValidOrder(int finalPopcornPrice)
         {
             SharedData.CurrentOrder.PopcornPrices = finalPopcornPrice;
@@ -109,28 +126,7 @@ namespace AppBanVePhim
                 SeatPrices = SharedData.CurrentOrder.SeatPrices,
                 PopcornPrices = finalPopcornPrice
             });
-        }
-
-        private void popcornConfirm_Click(object sender, EventArgs e)
-        {
-            int total = 0;
-            foreach (Control ctrl in popcornPanel.Controls)
-            {
-                if (ctrl is NumericUpDown num && num.Value > 0 && num.Tag is FoodItem item)
-                {
-                    total += item.Price * (int)num.Value;
-                }
-            }
-
-            if (total == 0)
-            {
-                MessageBox.Show("Vui lòng chọn ít nhất một món ăn/nước uống!");
-                return;
-            }
-
-            MessageBox.Show("Đã xác nhận lựa chọn bỏng nước. Tổng: " + total.ToString("N0") + " VND");
-        }
-
+        } 
         private void ShowBill()
         {
             if (orders.Count == 0) return;
@@ -154,10 +150,22 @@ namespace AppBanVePhim
             }
 
         }
-
         private void close_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void NumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            int total = 0;
+            foreach (Control ctrl in popcornPanel.Controls)
+            {
+                if (ctrl is NumericUpDown num && num.Value > 0 && num.Tag is FoodItem item)
+                {
+                    total += item.Price * (int)num.Value;
+                }
+            }
+            sumBill.Text = "Tổng tiền: " + total.ToString("N0") + " VNĐ";
         }
     }
 }
