@@ -8,7 +8,7 @@ namespace AppBanVePhim
     {
         public static void HandleMenuSelect(MenuSelectEventArgs e, Form currentForm)
         {
-            MessageBox.Show("Item được chọn: " + e.Value.Name);
+            //MessageBox.Show("Item được chọn: " + e.Value.Name);
 
             switch (e.Value.Name)
             {
