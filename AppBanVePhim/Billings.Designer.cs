@@ -29,13 +29,13 @@ namespace AppBanVePhim
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            AntdUI.MenuItem menuItem11 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem12 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem13 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem14 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem15 = new AntdUI.MenuItem();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            AntdUI.MenuItem menuItem6 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem7 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem8 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem9 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem10 = new AntdUI.MenuItem();
             this.theater = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeFrame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.watchDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,10 +50,11 @@ namespace AppBanVePhim
             this.billingsNextBtn = new AntdUI.ButtonShadow();
             this.buttonShadow2 = new AntdUI.ButtonShadow();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.close = new AntdUI.Label();
             this.menu1 = new AntdUI.Menu();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.close = new AntdUI.Label();
+            this.btnDelete = new AntdUI.ButtonShadow();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.billingPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,9 +84,9 @@ namespace AppBanVePhim
             // popcornPrice
             // 
             this.popcornPrice.DataPropertyName = "PopcornPrices";
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.popcornPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.popcornPrice.DefaultCellStyle = dataGridViewCellStyle3;
             this.popcornPrice.HeaderText = "Giá bỏng/nước";
             this.popcornPrice.Name = "popcornPrice";
             this.popcornPrice.ReadOnly = true;
@@ -93,8 +94,8 @@ namespace AppBanVePhim
             // totalPrice
             // 
             this.totalPrice.DataPropertyName = "TotalPrice";
-            dataGridViewCellStyle6.Format = "N0";
-            this.totalPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Format = "N0";
+            this.totalPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.totalPrice.HeaderText = "Tổng tiền";
             this.totalPrice.Name = "totalPrice";
             this.totalPrice.ReadOnly = true;
@@ -151,6 +152,7 @@ namespace AppBanVePhim
             // 
             // billingPanel
             // 
+            this.billingPanel.Controls.Add(this.btnDelete);
             this.billingPanel.Controls.Add(this.billingsNextBtn);
             this.billingPanel.Controls.Add(this.buttonShadow2);
             this.billingPanel.Controls.Add(this.dataGridView1);
@@ -165,7 +167,7 @@ namespace AppBanVePhim
             // 
             this.billingsNextBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.billingsNextBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.billingsNextBtn.Location = new System.Drawing.Point(637, 500);
+            this.billingsNextBtn.Location = new System.Drawing.Point(736, 500);
             this.billingsNextBtn.Name = "billingsNextBtn";
             this.billingsNextBtn.Shape = AntdUI.TShape.Round;
             this.billingsNextBtn.Size = new System.Drawing.Size(152, 40);
@@ -177,7 +179,7 @@ namespace AppBanVePhim
             // 
             this.buttonShadow2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonShadow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonShadow2.Location = new System.Drawing.Point(279, 500);
+            this.buttonShadow2.Location = new System.Drawing.Point(87, 500);
             this.buttonShadow2.Name = "buttonShadow2";
             this.buttonShadow2.Shape = AntdUI.TShape.Round;
             this.buttonShadow2.Size = new System.Drawing.Size(152, 40);
@@ -197,23 +199,33 @@ namespace AppBanVePhim
             this.panel1.Size = new System.Drawing.Size(962, 94);
             this.panel1.TabIndex = 26;
             // 
+            // close
+            // 
+            this.close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.close.Location = new System.Drawing.Point(934, 12);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(16, 23);
+            this.close.TabIndex = 27;
+            this.close.Text = "X";
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
             // menu1
             // 
-            menuItem11.Name = "menuMovie";
-            menuItem11.Text = "Chọn phim";
-            menuItem12.Name = "menuPopcorn";
-            menuItem12.Text = "Bỏng nước";
-            menuItem13.Name = "menuBillings";
-            menuItem13.Text = "Thống kê";
-            menuItem14.Name = "menuRatings";
-            menuItem14.Text = "Đánh giá";
-            menuItem15.Name = "menuLogout";
-            menuItem15.Text = "Đăng xuất";
-            this.menu1.Items.Add(menuItem11);
-            this.menu1.Items.Add(menuItem12);
-            this.menu1.Items.Add(menuItem13);
-            this.menu1.Items.Add(menuItem14);
-            this.menu1.Items.Add(menuItem15);
+            menuItem6.Name = "menuMovie";
+            menuItem6.Text = "Chọn phim";
+            menuItem7.Name = "menuPopcorn";
+            menuItem7.Text = "Bỏng nước";
+            menuItem8.Name = "menuBillings";
+            menuItem8.Text = "Thống kê";
+            menuItem9.Name = "menuRatings";
+            menuItem9.Text = "Đánh giá";
+            menuItem10.Name = "menuLogout";
+            menuItem10.Text = "Đăng xuất";
+            this.menu1.Items.Add(menuItem6);
+            this.menu1.Items.Add(menuItem7);
+            this.menu1.Items.Add(menuItem8);
+            this.menu1.Items.Add(menuItem9);
+            this.menu1.Items.Add(menuItem10);
             this.menu1.Location = new System.Drawing.Point(1, 1);
             this.menu1.Mode = AntdUI.TMenuMode.Horizontal_Arrow;
             this.menu1.Name = "menu1";
@@ -242,15 +254,17 @@ namespace AppBanVePhim
             this.panel3.Size = new System.Drawing.Size(162, 346);
             this.panel3.TabIndex = 1;
             // 
-            // close
+            // btnDelete
             // 
-            this.close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.close.Location = new System.Drawing.Point(934, 12);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(16, 23);
-            this.close.TabIndex = 27;
-            this.close.Text = "X";
-            this.close.Click += new System.EventHandler(this.close_Click);
+            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(426, 500);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Shape = AntdUI.TShape.Round;
+            this.btnDelete.Size = new System.Drawing.Size(152, 40);
+            this.btnDelete.TabIndex = 21;
+            this.btnDelete.Text = "Xóa hóa đơn";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // Billings
             // 
@@ -291,5 +305,6 @@ namespace AppBanVePhim
         private AntdUI.Menu menu1;
         private AntdUI.ButtonShadow billingsNextBtn;
         private AntdUI.Label close;
+        private AntdUI.ButtonShadow btnDelete;
     }
 }

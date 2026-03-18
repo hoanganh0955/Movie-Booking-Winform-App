@@ -29,13 +29,14 @@ namespace AppBanVePhim
         /// </summary>
         private void InitializeComponent()
         {
-            AntdUI.MenuItem menuItem16 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem17 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem18 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem19 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem20 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem1 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem2 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem3 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem4 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem5 = new AntdUI.MenuItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Seats));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.close = new AntdUI.Label();
             this.menu1 = new AntdUI.Menu();
             this.label1 = new System.Windows.Forms.Label();
             this.seatPanel = new AntdUI.Panel();
@@ -145,7 +146,6 @@ namespace AppBanVePhim
             this.button28 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.close = new AntdUI.Label();
             this.panel1.SuspendLayout();
             this.seatPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -162,23 +162,33 @@ namespace AppBanVePhim
             this.panel1.Size = new System.Drawing.Size(962, 94);
             this.panel1.TabIndex = 26;
             // 
+            // close
+            // 
+            this.close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.close.Location = new System.Drawing.Point(934, 12);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(16, 23);
+            this.close.TabIndex = 37;
+            this.close.Text = "X";
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
             // menu1
             // 
-            menuItem16.Name = "menuMovie";
-            menuItem16.Text = "Chọn phim";
-            menuItem17.Name = "menuPopcorn";
-            menuItem17.Text = "Bỏng nước";
-            menuItem18.Name = "menuBillings";
-            menuItem18.Text = "Thống kê";
-            menuItem19.Name = "menuRatings";
-            menuItem19.Text = "Đánh giá";
-            menuItem20.Name = "menuLogout";
-            menuItem20.Text = "Đăng xuất";
-            this.menu1.Items.Add(menuItem16);
-            this.menu1.Items.Add(menuItem17);
-            this.menu1.Items.Add(menuItem18);
-            this.menu1.Items.Add(menuItem19);
-            this.menu1.Items.Add(menuItem20);
+            menuItem1.Name = "menuMovie";
+            menuItem1.Text = "Chọn phim";
+            menuItem2.Name = "menuPopcorn";
+            menuItem2.Text = "Bỏng nước";
+            menuItem3.Name = "menuBillings";
+            menuItem3.Text = "Thống kê";
+            menuItem4.Name = "menuRatings";
+            menuItem4.Text = "Đánh giá";
+            menuItem5.Name = "menuLogout";
+            menuItem5.Text = "Đăng xuất";
+            this.menu1.Items.Add(menuItem1);
+            this.menu1.Items.Add(menuItem2);
+            this.menu1.Items.Add(menuItem3);
+            this.menu1.Items.Add(menuItem4);
+            this.menu1.Items.Add(menuItem5);
             this.menu1.Location = new System.Drawing.Point(2, 1);
             this.menu1.Mode = AntdUI.TMenuMode.Horizontal_Arrow;
             this.menu1.Name = "menu1";
@@ -1479,16 +1489,6 @@ namespace AppBanVePhim
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.SeatPicker_Click);
             // 
-            // close
-            // 
-            this.close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.close.Location = new System.Drawing.Point(934, 12);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(16, 23);
-            this.close.TabIndex = 37;
-            this.close.Text = "X";
-            this.close.Click += new System.EventHandler(this.close_Click);
-            // 
             // Seats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1500,6 +1500,7 @@ namespace AppBanVePhim
             this.Name = "Seats";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seats";
+            this.Load += new System.EventHandler(this.Seats_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.seatPanel.ResumeLayout(false);

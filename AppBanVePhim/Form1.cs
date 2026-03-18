@@ -13,7 +13,7 @@ namespace AppBanVePhim
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SharedData.LoadFromJson();
+            //SharedData.LoadFromJson();
         }
 
         public void ResetLogin()
@@ -49,6 +49,8 @@ namespace AppBanVePhim
             }
 
             SharedData.CurrentUser = user;
+            SharedData.LoadFromJson();
+
             MessageBox.Show($"Chào mừng {user.FullName}!", "Thành công",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 

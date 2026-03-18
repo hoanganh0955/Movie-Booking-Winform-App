@@ -51,5 +51,50 @@ namespace AppBanVePhim
         {
             Application.Exit();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = -1;
+
+            // ─── Trường hợp 1: chọn nguyên row ───
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                selectedIndex = dataGridView1.SelectedRows[0].Index;
+            }
+            // ─── Trường hợp 2: chọn cell ───
+            else if (dataGridView1.SelectedCells.Count > 0)
+            {
+                selectedIndex = dataGridView1.SelectedCells[0].RowIndex;
+            }
+
+            // ─── Không chọn gì ───
+            if (selectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn cần xóa!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // ─── Hiện thông tin hóa đơn sắp xóa để xác nhận ───
+            var order = SharedData.InvoiceList[selectedIndex];
+            DialogResult result = MessageBox.Show(
+                $"Xác nhận xóa hóa đơn?\n\n" +
+                $"Phim: {order.MovieName}\n" +
+                $"Rạp: {order.Theater}\n" +
+                $"Ngày: {order.Date}\n" +
+                $"Tổng tiền: {order.TotalPrice:N0} VNĐ",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result == DialogResult.No) return;
+
+            // ─── Xóa và lưu lại ───
+            SharedData.InvoiceList.RemoveAt(selectedIndex);
+            SharedData.SaveToJson();
+
+            MessageBox.Show("Đã xóa hóa đơn thành công!", "Thông báo",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace AppBanVePhim
         public void Seats_Load(object sender, EventArgs e)
         {
             nextPanel.Enabled = false;
+            LoadBookedSeats();
         }
 
         private void menu1_SelectChanged(object sender, AntdUI.MenuSelectEventArgs e)
@@ -108,7 +109,27 @@ namespace AppBanVePhim
             }
         }
 
+        private void LoadBookedSeats()
+        {
+            // ─── Lấy danh sách ghế đã đặt cho suất này ───
+            var bookedSeats = SharedData.GetBookedSeats(
+                SharedData.CurrentOrder.MovieName,
+                SharedData.CurrentOrder.Theater,
+                SharedData.CurrentOrder.Date,
+                SharedData.CurrentOrder.TimeFrame
+            );
 
+            // ─── Block ghế đã đặt — hiện màu xám ───
+            foreach (Control ctrl in seatPanel.Controls)
+            {
+                if (ctrl is Button seat &&
+                    bookedSeats.Contains(seat.Tag?.ToString()))
+                {
+                    seat.Enabled = false;
+                    seat.BackColor = Color.Gray; // ← xám = đã có người đặt
+                }
+            }
+        }
 
         private void confirmSeats_Click(object sender, EventArgs e)
         {
@@ -119,16 +140,26 @@ namespace AppBanVePhim
             }
 
             SharedData.CurrentOrder.Seats = selectedSeats.Count;
-            SharedData.CurrentOrder.Ticket = string.Join(", ", selectedSeats.Select(s => s.Tag.ToString()));
+            SharedData.CurrentOrder.Ticket = string.Join(", ",
+                selectedSeats.Select(s => s.Tag.ToString()));
 
-            foreach (System.Windows.Forms.Button seat in selectedSeats)
+            // ─── Lưu ghế vừa đặt vào file ───
+            var seatTags = selectedSeats.Select(s => s.Tag.ToString()).ToList();
+            SharedData.SaveBookedSeats(
+                SharedData.CurrentOrder.MovieName,
+                SharedData.CurrentOrder.Theater,
+                SharedData.CurrentOrder.Date,
+                SharedData.CurrentOrder.TimeFrame,
+                seatTags
+            );
+
+            foreach (Button seat in selectedSeats)
             {
                 seat.Enabled = false;
-                seat.BackColor = Color.Red;
+                seat.BackColor = Color.Red; // ← đỏ = vừa đặt bởi user hiện tại
             }
 
             MessageBox.Show("Đặt ghế thành công!");
-
             selectedSeats.Clear();
             nextPanel.Enabled = true;
         }

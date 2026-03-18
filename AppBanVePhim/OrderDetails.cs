@@ -26,7 +26,8 @@ namespace AppBanVePhim
             public int TotalPrice => Seats * 100000 + PopcornPrices; // Tự tính tổng
             public int StarRating { get; set; } = 0;
             public string Review { get; set; } = "";
-    }
+            public string Username { get; set; } = "";
+        }
         public class UserAccount
         {
             public string FullName { get; set; }
@@ -35,5 +36,13 @@ namespace AppBanVePhim
             public string Email { get; set; }
             public string Password { get; set; }
             public string Gender { get; set; }
+        }
+        public class SeatRecord
+        {
+            public string MovieName { get; set; }
+            public string Theater { get; set; }
+            public string Date { get; set; }
+            public string TimeFrame { get; set; }
+            public List<string> BookedSeats { get; set; } = new List<string>();
         }
 }

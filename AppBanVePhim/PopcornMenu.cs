@@ -117,6 +117,7 @@ namespace AppBanVePhim
 
             SharedData.InvoiceList.Add(new OrderDetail
             {
+                Username = SharedData.CurrentUser?.FullName ?? "",
                 MovieName = string.IsNullOrEmpty(SharedData.CurrentOrder.MovieName) ? "Không chọn" : SharedData.CurrentOrder.MovieName,
                 Theater = string.IsNullOrEmpty(SharedData.CurrentOrder.Theater) ? "Không chọn" : SharedData.CurrentOrder.Theater,
                 Date = string.IsNullOrEmpty(SharedData.CurrentOrder.Date) ? "Không chọn" : SharedData.CurrentOrder.Date,

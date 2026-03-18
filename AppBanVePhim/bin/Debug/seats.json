@@ -1,0 +1,36 @@
+[
+  {
+    "MovieName": "Thỏ Ơi!!",
+    "Theater": "CGV",
+    "Date": "Friday, December 25, 2026",
+    "TimeFrame": "08:00 ~ 10:00\t",
+    "BookedSeats": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B3",
+      "A5",
+      "A4",
+      "A6",
+      "F15",
+      "E15",
+      "D9",
+      "B8",
+      "A9",
+      "C10"
+    ]
+  },
+  {
+    "MovieName": "Thỏ Ơi!!",
+    "Theater": "Beta",
+    "Date": "Friday, December 25, 2026",
+    "TimeFrame": "08:00 ~ 10:00\t",
+    "BookedSeats": [
+      "A2",
+      "A3",
+      "A1"
+    ]
+  }
+]

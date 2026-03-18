@@ -95,9 +95,29 @@ namespace AppBanVePhim
         // ─── Lưu danh sách ra file JSON ───
         public static void SaveToJson()
         {
-            var listToSave = InvoiceList.ToList();
-            string json = JsonConvert.SerializeObject(listToSave, Formatting.Indented);
-            File.WriteAllText("orders.json", json);
+            List<OrderDetail> allOrders = new List<OrderDetail>();
+
+            // ─── Đọc tất cả đơn hiện có trong file ───
+            if (File.Exists("orders.json"))
+            {
+                try
+                {
+                    string existingJson = File.ReadAllText("orders.json");
+                    allOrders = JsonConvert.DeserializeObject<List<OrderDetail>>(existingJson)
+                                ?? new List<OrderDetail>();
+                }
+                catch { allOrders = new List<OrderDetail>(); }
+            }
+
+            // ─── Xoá đơn cũ của user hiện tại (sẽ được thay bằng list mới nhất) ───
+            allOrders.RemoveAll(o => o.Username == CurrentUser?.FullName);
+
+            // ─── Thêm lại toàn bộ đơn mới nhất của user hiện tại ───
+            allOrders.AddRange(InvoiceList);
+
+            // ─── Ghi lại file — bao gồm đơn của TẤT CẢ user ───
+            File.WriteAllText("orders.json",
+                JsonConvert.SerializeObject(allOrders, Formatting.Indented));
         }
 
         // ─── Đăng xuất ───
@@ -117,18 +137,92 @@ namespace AppBanVePhim
             try
             {
                 string json = File.ReadAllText(filePath);
-                var loadedList = JsonConvert.DeserializeObject<List<OrderDetail>>(json);
-                if (loadedList != null)
+                var allOrders = JsonConvert.DeserializeObject<List<OrderDetail>>(json);
+                if (allOrders == null) return;
+
+                InvoiceList.Clear();
+
+                foreach (var item in allOrders.Where(o =>
+                    o.Username == CurrentUser?.FullName))
                 {
-                    InvoiceList.Clear();
-                    foreach (var item in loadedList)
-                        InvoiceList.Add(item);
+                    InvoiceList.Add(item);
                 }
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
             }
+        }
+
+        private const string SEAT_FILE = "seats.json";
+
+        // ─── Tạo key duy nhất cho mỗi suất chiếu ───
+        public static string GetShowKey(string movie, string theater, string date, string timeFrame)
+        {
+            return $"{movie}|{theater}|{date}|{timeFrame}";
+        }
+
+        // ─── Đọc tất cả SeatRecord từ file ───
+        public static List<SeatRecord> LoadSeatRecords()
+        {
+            if (!File.Exists(SEAT_FILE)) return new List<SeatRecord>();
+            try
+            {
+                string json = File.ReadAllText(SEAT_FILE);
+                return JsonConvert.DeserializeObject<List<SeatRecord>>(json)
+                       ?? new List<SeatRecord>();
+            }
+            catch { return new List<SeatRecord>(); }
+        }
+
+        // ─── Lấy danh sách ghế đã đặt cho 1 suất chiếu ───
+        public static List<string> GetBookedSeats(string movie, string theater,
+                                                   string date, string timeFrame)
+        {
+            var records = LoadSeatRecords();
+            var match = records.FirstOrDefault(r =>
+                r.MovieName == movie &&
+                r.Theater == theater &&
+                r.Date == date &&
+                r.TimeFrame == timeFrame);
+
+            return match?.BookedSeats ?? new List<string>();
+        }
+
+        // ─── Lưu ghế vừa đặt vào file ───
+        public static void SaveBookedSeats(string movie, string theater,
+                                            string date, string timeFrame,
+                                            List<string> newSeats)
+        {
+            var records = LoadSeatRecords();
+            var match = records.FirstOrDefault(r =>
+                r.MovieName == movie &&
+                r.Theater == theater &&
+                r.Date == date &&
+                r.TimeFrame == timeFrame);
+
+            if (match != null)
+            {
+                // ─── Thêm ghế mới vào suất đã có ───
+                foreach (var seat in newSeats)
+                    if (!match.BookedSeats.Contains(seat))
+                        match.BookedSeats.Add(seat);
+            }
+            else
+            {
+                // ─── Tạo record mới cho suất chưa có ───
+                records.Add(new SeatRecord
+                {
+                    MovieName = movie,
+                    Theater = theater,
+                    Date = date,
+                    TimeFrame = timeFrame,
+                    BookedSeats = newSeats
+                });
+            }
+
+            File.WriteAllText(SEAT_FILE,
+                JsonConvert.SerializeObject(records, Formatting.Indented));
         }
 
         // ─── Reset đơn hàng hiện tại cho khách mới ───
