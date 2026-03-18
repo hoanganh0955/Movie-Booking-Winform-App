@@ -19,13 +19,13 @@ namespace AppBanVePhim
 
         private void Billings_Load(object sender, EventArgs e)
         {
-            // ─── 1. Load dữ liệu từ JSON trước ───
-            if (SharedData.InvoiceList.Count == 0)
-                SharedData.LoadFromJson();
-            //MessageBox.Show($"Số đơn hàng: {SharedData.InvoiceList.Count}");
-            // ─── 2. Gán DataSource sau khi đã có dữ liệu ───
+            SharedData.LoadFromJson(); // ← bỏ điều kiện if
+
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = SharedData.InvoiceList;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
         }
         private void menu1_SelectChanged(object sender, AntdUI.MenuSelectEventArgs e)
         {
@@ -90,6 +90,7 @@ namespace AppBanVePhim
             if (result == DialogResult.No) return;
 
             // ─── Xóa và lưu lại ───
+            SharedData.RemoveBookedSeats(order);
             SharedData.InvoiceList.RemoveAt(selectedIndex);
             SharedData.SaveToJson();
 

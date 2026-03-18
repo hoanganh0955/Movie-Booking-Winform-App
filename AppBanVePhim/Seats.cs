@@ -37,7 +37,20 @@ namespace AppBanVePhim
         public void Seats_Load(object sender, EventArgs e)
         {
             nextPanel.Enabled = false;
-            LoadBookedSeats();
+
+            // ─── Reset tất cả ghế về trắng trước ───
+            foreach (Control ctrl in seatPanel.Controls)
+            {
+                if (ctrl is Button seat)
+                {
+                    seat.Enabled = true;
+                    seat.BackColor = Color.White;
+                }
+            }
+
+            selectedSeats.Clear(); // ← reset list ghế đang chọn
+
+            LoadBookedSeats(); // ← sau đó mới load ghế đã đặt
         }
 
         private void menu1_SelectChanged(object sender, AntdUI.MenuSelectEventArgs e)
@@ -88,8 +101,6 @@ namespace AppBanVePhim
             }
             else
             {
-                SharedData.CurrentOrder.PopcornPrices = 0;
-
                 SharedData.InvoiceList.Add(new OrderDetail
                 {
                     MovieName = SharedData.CurrentOrder.MovieName,
@@ -98,7 +109,9 @@ namespace AppBanVePhim
                     TimeFrame = SharedData.CurrentOrder.TimeFrame,
                     Seats = SharedData.CurrentOrder.Seats,
                     Ticket = SharedData.CurrentOrder.Ticket,
-                    PopcornPrices = 0
+                    PopcornPrices = 0,
+                    SeatPrices = SharedData.CurrentOrder.SeatPrices,    // ← thêm
+                    Username = SharedData.CurrentUser?.FullName ?? "" // ← thêm
                 });
 
                 SharedData.CurrentOrder = new OrderDetail();

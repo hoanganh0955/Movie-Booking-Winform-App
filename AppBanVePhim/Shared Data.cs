@@ -224,6 +224,35 @@ namespace AppBanVePhim
             File.WriteAllText(SEAT_FILE,
                 JsonConvert.SerializeObject(records, Formatting.Indented));
         }
+        public static void RemoveBookedSeats(OrderDetail order)
+        {
+            if (!File.Exists(SEAT_FILE)) return;
+            try
+            {
+                var records = LoadSeatRecords();
+                var match = records.FirstOrDefault(r =>
+                    r.MovieName == order.MovieName &&
+                    r.Theater == order.Theater &&
+                    r.Date == order.Date &&
+                    r.TimeFrame == order.TimeFrame);
+
+                if (match == null) return;
+
+                var seatsToRemove = order.Ticket?
+                    .Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries)
+                    .ToList() ?? new List<string>();
+
+                foreach (var seat in seatsToRemove)
+                    match.BookedSeats.Remove(seat);
+
+                if (match.BookedSeats.Count == 0)
+                    records.Remove(match);
+
+                File.WriteAllText(SEAT_FILE,
+                    JsonConvert.SerializeObject(records, Formatting.Indented));
+            }
+            catch { }
+        }
 
         // ─── Reset đơn hàng hiện tại cho khách mới ───
         public static void ResetCurrentOrder()

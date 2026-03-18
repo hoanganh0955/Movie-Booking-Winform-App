@@ -23,7 +23,7 @@ namespace AppBanVePhim
             public int Seats { get; set; }
             public int PopcornPrices { get; set; }
             public int SeatPrices { get; set; }
-            public int TotalPrice => Seats * 100000 + PopcornPrices; // Tự tính tổng
+            public int TotalPrice => Seats * SeatPrices + PopcornPrices; // Tự tính tổng
             public int StarRating { get; set; } = 0;
             public string Review { get; set; } = "";
             public string Username { get; set; } = "";

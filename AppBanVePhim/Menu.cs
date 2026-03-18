@@ -21,6 +21,11 @@ namespace AppBanVePhim
                     break;
 
                 case "menuBillings":
+                    if (SharedData.CurrentOrder.MovieName != null)
+                    {
+                        MessageBox.Show("Vui lòng hoàn thành đơn hàng hiện tại trước!");
+                        return;
+                    }
                     NavigateTo(new Billings(), currentForm);
                     break;
 

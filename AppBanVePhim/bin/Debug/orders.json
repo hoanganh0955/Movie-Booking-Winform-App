@@ -8,7 +8,7 @@
     "Seats": 2,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 200000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -22,7 +22,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -36,7 +36,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -50,7 +50,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -64,7 +64,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -78,7 +78,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -92,7 +92,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -106,7 +106,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -120,7 +120,7 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
@@ -134,9 +134,23 @@
     "Seats": 1,
     "PopcornPrices": 0,
     "SeatPrices": 0,
-    "TotalPrice": 100000,
+    "TotalPrice": 0,
     "StarRating": 0,
     "Review": "",
     "Username": ""
+  },
+  {
+    "Ticket": "A7, A8",
+    "MovieName": "Thỏ Ơi!!",
+    "Theater": "CGV",
+    "Date": "Friday, December 25, 2026",
+    "TimeFrame": "08:00 ~ 10:00\t",
+    "Seats": 2,
+    "PopcornPrices": 100000,
+    "SeatPrices": 160000,
+    "TotalPrice": 420000,
+    "StarRating": 0,
+    "Review": "",
+    "Username": "anh"
   }
 ]
