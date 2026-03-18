@@ -95,9 +95,10 @@ namespace AppBanVePhim
         // ─── Lưu danh sách ra file JSON ───
         public static void SaveToJson()
         {
-            List<OrderDetail> allOrders = new List<OrderDetail>();
+            string fullPath = Path.GetFullPath("orders.json");
+            //System.Windows.Forms.MessageBox.Show("Lưu tại: " + fullPath);
 
-            // ─── Đọc tất cả đơn hiện có trong file ───
+            List<OrderDetail> allOrders = new List<OrderDetail>();
             if (File.Exists("orders.json"))
             {
                 try
@@ -109,13 +110,8 @@ namespace AppBanVePhim
                 catch { allOrders = new List<OrderDetail>(); }
             }
 
-            // ─── Xoá đơn cũ của user hiện tại (sẽ được thay bằng list mới nhất) ───
             allOrders.RemoveAll(o => o.Username == CurrentUser?.FullName);
-
-            // ─── Thêm lại toàn bộ đơn mới nhất của user hiện tại ───
             allOrders.AddRange(InvoiceList);
-
-            // ─── Ghi lại file — bao gồm đơn của TẤT CẢ user ───
             File.WriteAllText("orders.json",
                 JsonConvert.SerializeObject(allOrders, Formatting.Indented));
         }
